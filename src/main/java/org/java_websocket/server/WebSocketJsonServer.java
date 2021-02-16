@@ -199,7 +199,9 @@ public class WebSocketJsonServer extends WebSocketServer {
             return send(webSocket, event, content);
         }
 
-        return CompletableFuture.failedFuture(new NoSuchElementException("Invalid socketId"));
+        CompletableFuture<JSONObject> future = new CompletableFuture<>();
+        future.completeExceptionally(new NoSuchElementException("Invalid socketId"));
+        return future;
     }
 
     public synchronized CompletableFuture<JSONObject> send(WebSocket webSocket, String event, JSONObject content) {

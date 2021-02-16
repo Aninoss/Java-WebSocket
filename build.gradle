@@ -10,8 +10,8 @@ repositories {
 
 group = 'org.java-websocket'
 version = '1.5.2-SNAPSHOT'
-sourceCompatibility = 11
-targetCompatibility = 11
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 configurations {
     deployerJars
