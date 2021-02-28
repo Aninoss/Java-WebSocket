@@ -182,7 +182,11 @@ public class WebSocketJsonClient extends WebSocketClient {
             log.info("Web socket disconnected");
         }
         connected = false;
-        scheduledExecutorService.schedule(this::reconnect, 2, TimeUnit.SECONDS);
+        scheduledExecutorService.schedule(() -> {
+            if (!isConnected()) {
+                reconnect();
+            }
+        }, 2, TimeUnit.SECONDS);
     }
 
     @Override
